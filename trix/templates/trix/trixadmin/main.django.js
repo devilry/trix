@@ -2,8 +2,9 @@
 {% load extjs %}
 {% load i18n %}
 
+
 {% block imports %}
-    {{ block.super }}
+   {{ block.super }}
     Ext.require('trix.DashboardButtonBar');
 {% endblock %}
 
