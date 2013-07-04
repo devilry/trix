@@ -1,0 +1,88 @@
+{% extends "trix/base.django.html" %}
+{% load extjs %}
+{% load i18n %}
+
+{% block title %}{% trans "Profile" %}{% endblock %}
+
+{% block nav-class %}examiner{% endblock %}
+
+{% block headextra %}
+<link rel="stylesheet" href="{{DEVILRY_STATIC_URL }}/trix/print.css"
+      type="text/css" media="print" charset="utf-8"/>
+  <script src="{{DEVILRY_STATIC_URL}}/extjstrix/statisticsmodels.js"></script>
+  <script src="{{DEVILRY_STATIC_URL}}/extjstrix/Barchart.js"></script>
+  <script src="{{DEVILRY_STATIC_URL}}/extjstrix/Periodgrid.js"></script>
+  <script src="{{DEVILRY_STATIC_URL}}/extjstrix/Topicgrid.js"></script>
+  <script src="{{DEVILRY_STATIC_URL}}/extjstrix/StatisticsTable.js"></script>
+  <script src="{{DEVILRY_STATIC_URL}}/extjstrix/StatisticsPanel.js"></script>
+{% endblock %}
+{% block onready %}
+    Ext.getBody().unmask();
+
+    Ext.create('Ext.container.Viewport', {
+        layout: 'border',
+        style: 'background-color: transparent',
+        items: [{
+            region: 'north',
+            xtype: 'trixheader',
+            navclass: 'examiner'
+        }, {
+            region: 'south',
+            xtype: 'trixfooter'
+        }, {
+            region: 'center',
+            xtype: 'trixstats',
+        }]
+    });
+{% endblock %}
+{% block bodyContent %}
+{% endblock %}
+
+{% comment %}
+<div class="stats">
+<div id="grid" class="grid">
+  <strong>Tabell</strong><br />
+  Gir deg oversikt over hvor mange oppgaver du har gjort innenfor en
+  uke eller et tema. Du velger periode/temavisning i fanene under.
+  Poenget med tabellen er at du lett kan se hvilke deler av pensum du
+  kan jobbe mer med. Det er spesielt viktig å gjøre nøkkeloppgavene
+  hver uke.<br /><br />
+</div>
+
+<div id="graph" class="graph">
+<strong>Stolpediagram</strong><br />
+  Her er dataene fra tabellen presentert i et prosentdiagram. Klikk på
+  fanene under for å se hvordan du har gjort det innenfor en uke eller
+  et tema. Deretter kan du velge å vise Poeng eller Innsats. Er
+  Innsats på 100% betyr det at du har gjort alle oppgavene innenfor den kategorien.
+  Har du samtidig bare 80% av poengene i samme kategori betyr det at du har fått
+  hjelp til en del av oppgavene. Løser du en oppgave selv vil du få
+  maks poeng, imens en oppgave som løses med hjelp gir litt mindre
+  poeng.<br /><br />
+</div>
+</div>
+{% endblock %}
+
+{% block main %}
+<!-- Make this only available for Beta users
+<div class="levelinfo">
+  {% include "trix/xpbar.django.html" %}<br />
+  {% trans "Total points" %} : {{ level.total_points }} <br /><br />
+</div>
+
+<div class="userdata">
+<br /><br />
+<div class="portrait">
+  <img src="{{DEVILRY_STATIC_URL }}/trix/Portraits/{{ portrait }}"/>
+</div>
+
+<div class="userinfo">
+  {% trans "Name" %}: {{ user.first_name }} {{ user.last_name }}<br />
+  {% trans "Username" %}: {{ user.username }}<br />
+  email: {{ user.email }} <br /><br />
+  {% trans "last login" %}: {{ user.last_login }}<br /><br />
+</div>
+-->
+
+{% endblock %}
+{% endcomment %}

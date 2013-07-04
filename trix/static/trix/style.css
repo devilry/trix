@@ -1,0 +1,70 @@
+h1    { font-weight: bold; font-size: 150%; }
+h2    { font-weight: bold; font-size: 130%; }
+h3    { font-weight: bold; font-style: italic; font-size: 130%; }
+h4    { font-weight: bold; font-size: 120%; }
+h5    { font-weight: bold; font-style: italic; font-size: 120%; }
+h6    { font-weight: bold; font-size: 110%; }
+h7    { font-weight: bold; font-style: italic; font-size: 110%; }
+p     { margin: 0.5em 0; }
+i     { font-style: italic; }
+li { padding: 0.5em 0; }
+strong, b     { font-weight: bold; }
+table { margin: 1em 0; }
+pre   { border-color: #CCC;
+        border-style: dashed dashed dashed solid;
+        border-width: 1px 1px 1px 4px; }
+.maincol { min-width: 600px; max-width: 100%; }
+.statusbutton { }
+.choices, .status { margin: 0.25em; white-space: pre;}
+.choices a, .status a { margin-right: 0.5em; }
+.dispexc { font-size: 100% !important; padding-left: 2em; float: right; }
+#bq   { background-color: #EEE;
+        margin: 0.5em 0.5em 0.5em;
+        padding: 1em; }
+
+a { font-size: 100% !important; }
+
+.header > .nav li.maillink-navitem a {
+    background-color: #222;
+    color: #fff;
+    border-radius: 6px 14px 0 0;
+    background-image: url(icons/mail.png) !important;
+    background-repeat: no-repeat;
+    background-position: 10px center;
+    padding-left: 32px;
+}
+.header > .nav li.externallink-navitem a:hover {
+    color: white;
+    background-color: #333333 !important;
+}
+
+.x-btn {
+    border-color: #9D9D9D;
+}
+
+.x-btn-disabled {
+    border-color: #D7D7D7;
+}
+
+/*.unfollowed { visibility: hidden; }*/
+
+.exercises { clear: both; margin-bottom: 2em; }
+.exercises th    { font-weight: bold; font-size: 100%; padding: 0.3em; }
+.exercises td    { padding: 0.5em 0.3em; }
+.exctext { padding-top: 0.5em; }
+
+.xptopic { float: left; margin-right: 1em; }
+.xpbar { background-color: #0077B3; position: relative; float: left; z-index: 1; border: 1px solid #0077B3; }
+.xpbar > div { background-color: #8f8; height: 100%; position: absolute; left: 0; top: 0; z-index: 2; text-indent: 1em;}
+.xpbar + * { clear: left; }
+
+.portrait { position: relative; float: left;  border: 10px dashed #77B300; margin-right: 2em }
+.userinfo { position: relative; top: 15px; font-size:15px; }
+.levelinfo { clear: left; }
+
+.grid { width: 450px; float: left; clear: none;}
+.emptydiv1 { width: 10%; }
+.graph { float: right; width: 800px; clear: none; margin-right: 2em; margin-bottom: 2em;}
+.emptydiv2 { width: 10 %;  }
+
+#perioddropdown label { font-size: 11pt; }
