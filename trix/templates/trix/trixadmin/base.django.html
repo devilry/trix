@@ -19,10 +19,10 @@
         //renderTo: 'searchwidget-container',
         hidden: true,
         urlPrefix: DASHBOARD_URL,
-        periodRowTpl: '{{ restfulapi.RestfulSimplifiedPeriod.ExtjsModelMeta.combobox_tpl|escapejs }}',
-        topicRowTpl: '{{ restfulapi.RestfulSimplifiedTopic.ExtjsModelMeta.combobox_tpl|escapejs }}',
-        periodgroupRowTpl: '{{ restfulapi.RestfulSimplifiedPeriodGroup.ExtjsModelMeta.combobox_tpl|escapejs }}',
-        exerciseRowTpl: '{{ restfulapi.RestfulSimplifiedExercise.ExtjsModelMeta.combobox_tpl|escapejs }}',
+        periodRowTpl: '\u003Cdiv class\u003D\u0022section popuplistitem\u0022\u003E    \u003Cp class\u003D\u0022path\u0022\u003E{parentnode__long_name}\u003C/p\u003E    \u003Ch1\u003E{long_name:ellipsis(40)}\u003C/h1\u003E\u003C/div\u003E',
+        topicRowTpl: '\u003Cdiv class\u003D\u0022section popuplistitem\u0022\u003E\u003Ch1\u003E{name}\u003C/h1\u003E\u003C/div\u003E',
+        periodgroupRowTpl: '\u003Cdiv class\u003D\u0022section popuplistitem\u0022\u003E    \u003Cp class\u003D\u0022path\u0022\u003E{subject__long_name}\u003C/p\u003E    \u003Ch1\u003E{long_name:ellipsis(40)}\u003C/h1\u003E\u003C/div\u003E',
+        exerciseRowTpl: '\u003Cdiv class\u003D\u0022important\u0022\u003E{short_name}\u003C/div\u003E\u003Cdiv class\u003D\u0022unimportant\u0022\u003E{long_name}\u003C/div\u003E',
     });
     searchwidget.loadInitialValues();
 
