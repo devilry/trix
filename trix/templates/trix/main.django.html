@@ -42,30 +42,170 @@
 
 <script type="text/javascript">
     var DASHBOARD_URL = '{{ DEVILRY_URLPATH_PREFIX }}/trix/';
-  // Models
+    // Models
+
+        Ext.define('trix.apps.trix.simplified.period.SimplifiedPeriod', {
+            extend: 'Ext.data.Model',
+            requires: ['devilry.extjshelpers.RestProxy'],
+            fields: [{"type": "int", "name": "id"}, {"type": "auto", "name": "parentnode"}, {"type": "auto", "name": "short_name"}, {"type": "auto", "name": "long_name"}, {"type": "date", "name": "start_time", "dateFormat": "Y-m-dTH:i:s"}, {"type": "date", "name": "end_time", "dateFormat": "Y-m-dTH:i:s"}, {"type": "auto", "name": "group"}, {"type": "auto", "name": "period_ptr"}, {"type": "auto", "name": "parentnode__short_name"}, {"type": "auto", "name": "parentnode__long_name"}],
+            idProperty: 'period_ptr',
+            proxy: Ext.create('devilry.extjshelpers.RestProxy', {
+                url: '/trix/restfulsimplifiedperiod/',
+                extraParams: {
+                    getdata_in_qrystring: true,
+                    result_fieldgroups: '["subject"]'
+                },
+                reader: {
+                    type: 'json',
+                    root: 'items',
+                    totalProperty: 'total'
+                },
+                writer: {
+                    type: 'json'
+                }
+            })
+        });
+    Ext.define('trix.apps.trix.simplified.topic.SimplifiedTopic', {
+            extend: 'Ext.data.Model',
+            requires: ['devilry.extjshelpers.RestProxy'],
+            fields: [{"type": "int", "name": "id"}, {"type": "auto", "name": "name"}],
+            idProperty: 'id',
+            proxy: Ext.create('devilry.extjshelpers.RestProxy', {
+                url: '/trix/restfulsimplifiedtopic/',
+                extraParams: {
+                    getdata_in_qrystring: true,
+                    result_fieldgroups: '[]'
+                },
+                reader: {
+                    type: 'json',
+                    root: 'items',
+                    totalProperty: 'total'
+                },
+                writer: {
+                    type: 'json'
+                }
+            })
+        });
+    Ext.define('trix.apps.trix.simplified.periodexercise.SimplifiedPeriodExercise', {
+            extend: 'Ext.data.Model',
+            requires: ['devilry.extjshelpers.RestProxy'],
+            fields: [{"type": "int", "name": "id"}, {"type": "auto", "name": "period"}, {"type": "auto", "name": "exercise"}, {"type": "int", "name": "points"}, {"type": "bool", "name": "starred"}, {"type": "int", "name": "number"}, {"type": "auto", "name": "exercise__short_name"}, {"type": "auto", "name": "exercise__long_name"}, {"type": "auto", "name": "exercise__topics__name"}, {"type": "auto", "name": "period__long_name"}, {"type": "auto", "name": "period__short_name"}],
+            idProperty: 'id',
+            proxy: Ext.create('devilry.extjshelpers.RestProxy', {
+                url: '/trix/restfulsimplifiedperiodexercise/',
+                extraParams: {
+                    getdata_in_qrystring: true,
+                    result_fieldgroups: '["exercise", "period"]'
+                },
+                reader: {
+                    type: 'json',
+                    root: 'items',
+                    totalProperty: 'total'
+                },
+                writer: {
+                    type: 'json'
+                }
+            })
+        });
+    Ext.define('trix.apps.trix.simplified.student.SimplifiedStudent', {
+            extend: 'Ext.data.Model',
+            requires: ['devilry.extjshelpers.RestProxy'],
+            fields: [{"type": "int", "name": "id"}, {"type": "auto", "name": "username"}, {"type": "auto", "name": "followedgroups__id"}, {"type": "auto", "name": "fake_followedgroups"}],
+            idProperty: 'id',
+            proxy: Ext.create('devilry.extjshelpers.RestProxy', {
+                url: '/trix/restfulsimplifiedstudent/',
+                extraParams: {
+                    getdata_in_qrystring: true,
+                    result_fieldgroups: '[]'
+                },
+                reader: {
+                    type: 'json',
+                    root: 'items',
+                    totalProperty: 'total'
+                },
+                writer: {
+                    type: 'json'
+                }
+            })
+        });
+    Ext.define('trix.apps.trix.simplified.periodgroup.SimplifiedPeriodGroup', {
+            extend: 'Ext.data.Model',
+            requires: ['devilry.extjshelpers.RestProxy'],
+            fields: [{"type": "int", "name": "id"}, {"type": "auto", "name": "long_name"}, {"type": "auto", "name": "subject"}, {"type": "auto", "name": "subject__long_name"}, {"type": "auto", "name": "periods__id"}, {"type": "auto", "name": "fake_periods"}, {"type": "auto", "name": "fake_followers"}, {"type": "auto", "name": "fake_students"}],
+            idProperty: 'id',
+            proxy: Ext.create('devilry.extjshelpers.RestProxy', {
+                url: '/trix/restfulsimplifiedperiodgroup/',
+                extraParams: {
+                    getdata_in_qrystring: true,
+                    result_fieldgroups: '[]'
+                },
+                reader: {
+                    type: 'json',
+                    root: 'items',
+                    totalProperty: 'total'
+                },
+                writer: {
+                    type: 'json'
+                }
+            })
+    });
+    
+    <!--
     {{ restfulapi.RestfulSimplifiedPeriod|extjs_model:"subject" }};
     {{ restfulapi.RestfulSimplifiedTopic|extjs_model }};
     {{ restfulapi.RestfulSimplifiedPeriodExercise|extjs_model:"exercise,period" }};
     {{ restfulapi.RestfulSimplifiedStudent|extjs_model }};
     {{ restfulapi.RestfulSimplifiedPeriodGroup|extjs_model }};
+    -->
     {% comment %}
     {{ restfulapi.RestfulSimplifiedExercise|extjs_model }};
     {{ restfulapi.RestfulSimplifiedStatus|extjs_model }};
     {{ restfulapi.RestfulSimplifiedExerciseStatus|extjs_model }};
 {% endcomment %}
 
-  // Test extjs_store
-    {{ restfulapi.RestfulSimplifiedPeriod|extjs_store }};
-    {{ restfulapi.RestfulSimplifiedTopic|extjs_store }};
-    {{ restfulapi.RestfulSimplifiedPeriodExercise|extjs_store }};
-    {{ restfulapi.RestfulSimplifiedStudent|extjs_store }};
-    groupstore = {{ restfulapi.RestfulSimplifiedPeriodGroup|extjs_store }};
+// Test extjs_store
+Ext.create('Ext.data.Store', {
+    model: 'trix.apps.trix.simplified.period.SimplifiedPeriod',
+    id: 'trix.apps.trix.simplified.period.SimplifiedPeriodStore',
+    remoteFilter: true,
+    remoteSort: true,
+    autoSync: true
+});
+Ext.create('Ext.data.Store', {
+    model: 'trix.apps.trix.simplified.topic.SimplifiedTopic',
+    id: 'trix.apps.trix.simplified.topic.SimplifiedTopicStore',
+    remoteFilter: true,
+    remoteSort: true,
+    autoSync: true
+});
+Ext.create('Ext.data.Store', {
+    model: 'trix.apps.trix.simplified.periodexercise.SimplifiedPeriodExercise',
+    id: 'trix.apps.trix.simplified.periodexercise.SimplifiedPeriodExerciseStore',
+    remoteFilter: true,
+    remoteSort: true,
+    autoSync: true
+});
+Ext.create('Ext.data.Store', {
+    model: 'trix.apps.trix.simplified.student.SimplifiedStudent',
+    id: 'trix.apps.trix.simplified.student.SimplifiedStudentStore',
+    remoteFilter: true,
+    remoteSort: true,
+    autoSync: true
+});
+groupstore = Ext.create('Ext.data.Store', {
+    model: 'trix.apps.trix.simplified.periodgroup.SimplifiedPeriodGroup',
+    id: 'trix.apps.trix.simplified.periodgroup.SimplifiedPeriodGroupStore',
+    remoteFilter: true,
+    remoteSort: true,
+    autoSync: true
+});
+	    
 {% comment %}
   {{ restfulapi.RestfulSimplifiedStatus|extjs_store }};
   {{ restfulapi.RestfulSimplifiedExercise|extjs_store }};
   {{ restfulapi.RestfulSimplifiedExerciseStatus|extjs_store }};
 {% endcomment %}
-</script>
+</script>-->
 {% endblock %}
 
 {% block imports %}
