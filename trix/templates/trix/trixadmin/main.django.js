@@ -10,35 +10,6 @@
 
 {% block appjs %}
     {{ block.super }}
-
-        Ext.define('trix.apps.trix.simplified.topic.SimplifiedTopicSearch', {
-            extend: 'Ext.data.Model',
-            requires: ['devilry.extjshelpers.RestProxy'],
-            fields: [{"type": "int", "name": "id"}, {"type": "auto", "name": "name"}],
-            idProperty: 'id',
-            proxy: Ext.create('devilry.extjshelpers.RestProxy', {
-                url: '/trix/restfulsimplifiedtopic/',
-                extraParams: {
-                    getdata_in_qrystring: true,
-                    result_fieldgroups: '[]'
-                },
-                reader: {
-                    type: 'json',
-                    root: 'items',
-                    totalProperty: 'total'
-                },
-                writer: {
-                    type: 'json'
-                }
-            })
-        });
-        Ext.create('Ext.data.Store', {
-            model: 'trix.apps.trix.simplified.topic.SimplifiedTopicSearch',
-            id: 'trix.apps.trix.simplified.topic.SimplifiedTopicStoreSearch',
-            remoteFilter: true,
-            remoteSort: true,
-            autoSync: true
-        });
     
         Ext.define('trix.apps.trix.simplified.periodgroup.SimplifiedPeriodGroupSearch', {
             extend: 'Ext.data.Model',
