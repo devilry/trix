@@ -94,7 +94,7 @@ Ext.define('trix.apps.trix.simplified.topic.SimplifiedTopic', {
             },
             items: [searchwidget, {
                 xtype: 'topicview',
-                modelname: {{ restfulapi.RestfulSimplifiedTopic|extjs_modelname }},
+                modelname: 'trix.apps.trix.simplified.topic.SimplifiedTopic',
                 objectid: {{ objectid }},
                 exercisestore: exercisestore,
                 dashboardUrl: DASHBOARD_URL,
