@@ -414,23 +414,6 @@
             autoSync: true
         });
 
-{% comment %}
-{{ restfulapi.RestfulSimplifiedExercise|extjs_model }},
-    {{ restfulapi.RestfulSimplifiedTopic|extjs_model }},
-    {{ restfulapi.RestfulSimplifiedPeriodExercise|extjs_model }},
-    {{ restfulapi.RestfulSimplifiedNode|extjs_model }};
-    {{ restfulapi.RestfulSimplifiedSubject|extjs_model }};
-    {{ restfulapi.RestfulSimplifiedPeriod|extjs_model:"subject" }};
-    {{ restfulapi.RestfulSimplifiedPeriodGroup|extjs_model }};
- 
-    var exercisestore = {{ restfulapi.RestfulSimplifiedExercise|extjs_store }};
-    var topicstore = {{ restfulapi.RestfulSimplifiedTopic|extjs_store }};
-    var periodexercisestore = {{ restfulapi.RestfulSimplifiedPeriodExercise|extjs_store }};
-    var nodestore = {{ restfulapi.RestfulSimplifiedNode|extjs_store }};
-    var subjectstore = {{ restfulapi.RestfulSimplifiedSubject|extjs_store }};
-    var periodstore = {{ restfulapi.RestfulSimplifiedPeriod|extjs_store }};
-var periodgroupstore = {{ restfulapi.RestfulSimplifiedPeriodGroup|extjs_store }};
-{% endcomment %}
     nodestore.pageSize = 1;
     subjectstore.pageSize = 1;
     periodstore.pageSize = 1;
@@ -441,7 +424,27 @@ var periodgroupstore = {{ restfulapi.RestfulSimplifiedPeriodGroup|extjs_store }}
 {{ block.super }}
 
 
-    var dashboard_periodmodel = {{ restfulapi.RestfulSimplifiedPeriod|extjs_model:"subject" }}
+    var dashboard_periodmodel = Ext.define('trix.apps.trix.simplified.period.SimplifiedPeriod', {
+            extend: 'Ext.data.Model',
+            requires: ['devilry.extjshelpers.RestProxy'],
+            fields: [{"type": "int", "name": "id"}, {"type": "auto", "name": "parentnode"}, {"type": "auto", "name": "short_name"}, {"type": "auto", "name": "long_name"}, {"type": "date", "name": "start_time", "dateFormat": "Y-m-dTH:i:s"}, {"type": "date", "name": "end_time", "dateFormat": "Y-m-dTH:i:s"}, {"type": "auto", "name": "group"}, {"type": "auto", "name": "period_ptr"}, {"type": "auto", "name": "parentnode__short_name"}, {"type": "auto", "name": "parentnode__long_name"}],
+            idProperty: 'period_ptr',
+            proxy: Ext.create('devilry.extjshelpers.RestProxy', {
+                url: '/trix/restfulsimplifiedperiod/',
+                extraParams: {
+                    getdata_in_qrystring: true,
+                    result_fieldgroups: '["subject"]'
+                },
+                reader: {
+                    type: 'json',
+                    root: 'items',
+                    totalProperty: 'total'
+                },
+                writer: {
+                    type: 'json'
+                }
+            })
+        })
     var permchecker = Ext.create('Ext.Component', {
         html: '<div class="section info-small extravisible-small"><h1>{{ DEVILRY_ADMINISTRATOR_NO_PERMISSION_MSG.title }}</h1>' +
             '<p>{{ DEVILRY_ADMINISTRATOR_NO_PERMISSION_MSG.body }}</p></div>',
@@ -449,13 +452,13 @@ var periodgroupstore = {{ restfulapi.RestfulSimplifiedPeriodGroup|extjs_store }}
 
 
     var buttonbar = Ext.create('trix.DashboardButtonBar', {
-        node_modelname: {{ restfulapi.RestfulSimplifiedNode|extjs_modelname }},
-        subject_modelname: {{ restfulapi.RestfulSimplifiedSubject|extjs_modelname }},
-        period_modelname: {{ restfulapi.RestfulSimplifiedPeriod|extjs_modelname }},
-        periodgroup_modelname: {{ restfulapi.RestfulSimplifiedPeriodGroup|extjs_modelname }},
-        topic_modelname:  {{ restfulapi.RestfulSimplifiedTopic|extjs_modelname }},
-        exercise_modelname:  {{ restfulapi.RestfulSimplifiedExercise|extjs_modelname }},
-        periodexercise_modelname:  {{ restfulapi.RestfulSimplifiedPeriodExercise|extjs_modelname }},
+        node_modelname: 'trix.apps.trix.simplified.node.SimplifiedNode',
+        subject_modelname: 'trix.apps.trix.simplified.subject.SimplifiedSubject',
+        period_modelname: 'trix.apps.trix.simplified.period.SimplifiedPeriod',
+        periodgroup_modelname: 'trix.apps.trix.simplified.periodgroup.SimplifiedPeriodGroup',
+        topic_modelname:  'trix.apps.trix.simplified.topic.SimplifiedTopic',
+        exercise_modelname:  'trix.apps.trix.simplified.exercise.SimplifiedExercise',
+        periodexercise_modelname:  'trix.apps.trix.simplified.periodexercise.SimplifiedPeriodExercise',
         is_superuser: is_superuser,
         nodestore: nodestore,
         subjectstore: subjectstore,
