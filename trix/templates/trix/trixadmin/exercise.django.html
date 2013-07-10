@@ -17,7 +17,27 @@
     Ext.require('trix.ModelView');
     Ext.require('trix.ExerciseView');
     Ext.require('trix.Exercise');
-    {{ restfulapi.RestfulSimplifiedTopic|extjs_model }};
+    Ext.define('trix.apps.trix.simplified.topic.SimplifiedTopic', {
+            extend: 'Ext.data.Model',
+            requires: ['devilry.extjshelpers.RestProxy'],
+            fields: [{"type": "int", "name": "id"}, {"type": "auto", "name": "name"}],
+            idProperty: 'id',
+            proxy: Ext.create('devilry.extjshelpers.RestProxy', {
+                url: '/trix/restfulsimplifiedtopic/',
+                extraParams: {
+                    getdata_in_qrystring: true,
+                    result_fieldgroups: '[]'
+                },
+                reader: {
+                    type: 'json',
+                    root: 'items',
+                    totalProperty: 'total'
+                },
+                writer: {
+                    type: 'json'
+                }
+            })
+        });
 {% endblock %}
 
 {% block onready %}
