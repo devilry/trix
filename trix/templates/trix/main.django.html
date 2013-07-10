@@ -200,12 +200,13 @@ groupstore = Ext.create('Ext.data.Store', {
     autoSync: true
 });
 	    
-{% comment %}
+    {% comment %}
+    <!-- this stuff doesn't appear to be in use. -->
   {{ restfulapi.RestfulSimplifiedStatus|extjs_store }};
   {{ restfulapi.RestfulSimplifiedExercise|extjs_store }};
   {{ restfulapi.RestfulSimplifiedExerciseStatus|extjs_store }};
 {% endcomment %}
-</script>-->
+</script>
 {% endblock %}
 
 {% block imports %}
