@@ -451,7 +451,7 @@
     });
 
 
-    var buttonbar = Ext.create('trix.DashboardButtonBar', {
+    buttonbar = Ext.create('trix.DashboardButtonBar', {
         node_modelname: 'trix.apps.trix.simplified.node.SimplifiedNode',
         subject_modelname: 'trix.apps.trix.simplified.subject.SimplifiedSubject',
         period_modelname: 'trix.apps.trix.simplified.period.SimplifiedPeriod',
@@ -522,6 +522,10 @@
 }
 Ext.getBody().unmask();
 
+// QnD hack to get rid of the button bar mask. I have
+// no clue why it's broken, but unmasking it too early
+// seems to have no effect.
+setInterval(function(){buttonbar.unmask()},3000);
 
 {% endblock %}
 
