@@ -189,7 +189,8 @@ def administrator(request):
     Administrator page showing the administrator interface
     """
     return render(request, 'trix/trixadmin/main.django.js',
-                  {'restfulapi': dump_all_into_dict(restful)})
+                  {'restfulapi': dump_all_into_dict(restful),
+                   'page_title':'admin'})
 
 @login_required
 def periodadmin(request, period_id=-1):
