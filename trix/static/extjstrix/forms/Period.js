@@ -60,7 +60,7 @@ Ext.define('trix.forms.Period', {
         items: [{
             name: "start_time",
             fieldLabel: "Start",
-            xtype: 'devilrydatetimefield',
+            xtype: 'devilry_extjsextras_datefield',
             flex: 1
         }, {
             xtype: 'box',
@@ -68,7 +68,7 @@ Ext.define('trix.forms.Period', {
         }, {
             name: "end_time",
             fieldLabel: "End",
-            xtype: 'devilrydatetimefield',
+            xtype: 'devilry_extjsextras_datefield',
             flex: 1
         }]
     }],
