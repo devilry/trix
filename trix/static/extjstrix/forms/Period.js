@@ -4,7 +4,9 @@ Ext.define('trix.forms.Period', {
     cls: 'widget-periodform',
     requires: [
         'devilry.extjshelpers.formfields.ForeignKeySelector',
-        'devilry.extjshelpers.formfields.DateTimeField'
+        'devilry.extjshelpers.formfields.DateTimeField',
+	'devilry_extjsextras.form.DateTimeField',
+	'devilry_extjsextras.DatetimeHelpers'
     ],
 
     suggested_windowsize: {
@@ -57,20 +59,31 @@ Ext.define('trix.forms.Period', {
             labelAlign: 'top'
         },
 
-        items: [{
-            name: "start_time",
-            fieldLabel: "Start",
-            xtype: 'devilry_extjsextras_datefield',
-            flex: 1
-        }, {
-            xtype: 'box',
-            width: 20
-        }, {
-            name: "end_time",
-            fieldLabel: "End",
-            xtype: 'devilry_extjsextras_datefield',
-            flex: 1
-        }]
+        items: [
+	    {
+	    	name: "start_time",
+	    	xtype: "devilry_extjsextras-datetimefield",
+	    	fieldLabel: "Start",
+	    	hideLabel: true,
+	    	allowBlank: false,
+	    	itemId: "startlabel",
+	    	width: 100
+	    },
+	    {
+		xtype: 'box',
+		width: 20
+            },
+	    {
+	    	name: "end_time",
+	    	xtype: "devilry_extjsextras-datetimefield",
+	    	fieldLabel: "Stop",
+	    	hideLabel: true,
+	    	allowBlank: false,
+	    	itemId: "endlabel",
+	    	width: 100
+	    }
+
+	]
     }],
 
     help: [
