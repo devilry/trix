@@ -20,3 +20,13 @@ improved coverage.
 Originally written for devilry 1.1 in 2010-2011 by Sigmund Hansen.
 
 Ported to devilry 1.2.1.10 in 2013 by Jonathan Ringstad.
+
+INSTALLATION
+------------
+
+To add trix to a working devilry installation, add 'trix' to your
+INSTALLED_APPS array in your settings (e.g. default_settings.py.)
+You will then need to add the following line to your url configuration
+(e.g. devilry_developer/dev_urls.py):
+
+url(r'^trix/', include('trix.urls')),
