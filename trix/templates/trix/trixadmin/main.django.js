@@ -14,6 +14,8 @@ Ext.syncRequire('devilry_authenticateduserinfo.UserInfo');
 {% endblock %}
 
 {% block appjs %}
+{% include "trix/restful-models.js" %}
+
 {{ block.super }}
         permchecker = undefined;
         Ext.define('trix.apps.trix.simplified.periodgroup.SimplifiedPeriodGroupSearch', {
