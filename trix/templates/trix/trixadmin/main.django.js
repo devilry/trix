@@ -468,7 +468,8 @@ Ext.syncRequire('devilry_authenticateduserinfo.UserInfo');
 	}
     });
 buttonbar = Ext.create('trix.AdminButtonBar', {
-    topic_modelname: 'trix.apps.trix.simplified.topic.SimplifiedTopic'
+    topic_modelname: 'trix.apps.trix.simplified.topic.SimplifiedTopic',
+    exercise_modelname: 'trix.apps.trix.simplified.exercise.SimplifiedExercise',
 });
     // buttonbar = Ext.create('trix.DashboardButtonBar', {
     //     node_modelname: 'trix.apps.trix.simplified.node.SimplifiedNode',

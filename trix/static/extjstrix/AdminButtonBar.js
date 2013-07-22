@@ -7,7 +7,7 @@ Ext.define('trix.AdminButtonBar', {
         // 'trix.forms.Period',
         // 'trix.forms.PeriodGroup',
         'trix.forms.Topic',
-        // 'trix.forms.Exercise',
+        'trix.forms.Exercise',
         // 'trix.forms.PeriodExercise',
         'devilry.administrator.DefaultCreateWindow',
         'devilry.extjshelpers.RestfulSimplifiedEditPanel',
@@ -24,6 +24,7 @@ Ext.define('trix.AdminButtonBar', {
     },
     config: {
 	topic_modelname: undefined,
+	exercise_modelname: undefined,
     },
     constructor: function(config){
 	this.initConfig(config);
@@ -59,6 +60,16 @@ Ext.define('trix.AdminButtonBar', {
 			{
 			    xtype: 'button',
 			    text: "New Exercise",
+			    handler: function() {
+				Ext.create('trix.DefaultEditWindow', {
+				    title: 'Create new exercise',
+				    editpanel: Ext.ComponentManager.create({
+					xtype: 'restfulsimplified_editpanel',
+					model: me.exercise_modelname,
+					editform: Ext.widget('administrator_exerciseform')
+				    }),
+				}).show();
+			    }
 			}
 		    ]
 		},
