@@ -234,7 +234,8 @@ def topicadmin(request, topic_id=-1):
     """
     return render(request, 'trix/trixadmin/topic.django.html',
                   {'objectid': topic_id,
-                   'restfulapi': dump_all_into_dict(restful)
+                   'restfulapi': dump_all_into_dict(restful),
+                   'page_title':'admin'
                    })
 
 @login_required

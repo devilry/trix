@@ -4,13 +4,18 @@
 
 
 {% block imports %}
-   {{ block.super }}
-    Ext.require('trix.DashboardButtonBar');
+{{ block.super }}
+
+<!--
+//Ext.require('trix.DashboardButtonBar');
+//replaced with normal buttons, see below
+-->
+Ext.syncRequire('devilry_authenticateduserinfo.UserInfo');
 {% endblock %}
 
 {% block appjs %}
-    {{ block.super }}
-    
+{{ block.super }}
+        permchecker = undefined;
         Ext.define('trix.apps.trix.simplified.periodgroup.SimplifiedPeriodGroupSearch', {
             extend: 'Ext.data.Model',
             requires: ['devilry.extjshelpers.RestProxy'],
@@ -417,7 +422,7 @@
     nodestore.pageSize = 1;
     subjectstore.pageSize = 1;
     periodstore.pageSize = 1;
-    var is_superuser = {{ user.is_superuser|lower }};
+    //var is_superuser = {{ user.is_superuser|lower }};
 {% endblock %}
 
 {% block onready %}
@@ -445,29 +450,41 @@
                 }
             })
         })
-    var permchecker = Ext.create('Ext.Component', {
+    permchecker = Ext.create('Ext.Component', {
         html: '<div class="section info-small extravisible-small"><h1>{{ DEVILRY_ADMINISTRATOR_NO_PERMISSION_MSG.title }}</h1>' +
             '<p>{{ DEVILRY_ADMINISTRATOR_NO_PERMISSION_MSG.body }}</p></div>',
     });
-
-
-    buttonbar = Ext.create('trix.DashboardButtonBar', {
-        node_modelname: 'trix.apps.trix.simplified.node.SimplifiedNode',
-        subject_modelname: 'trix.apps.trix.simplified.subject.SimplifiedSubject',
-        period_modelname: 'trix.apps.trix.simplified.period.SimplifiedPeriod',
-        periodgroup_modelname: 'trix.apps.trix.simplified.periodgroup.SimplifiedPeriodGroup',
-        topic_modelname:  'trix.apps.trix.simplified.topic.SimplifiedTopic',
-        exercise_modelname:  'trix.apps.trix.simplified.exercise.SimplifiedExercise',
-        periodexercise_modelname:  'trix.apps.trix.simplified.periodexercise.SimplifiedPeriodExercise',
-        is_superuser: is_superuser,
-        nodestore: nodestore,
-        subjectstore: subjectstore,
-        periodstore: periodstore,
-        periodgroupstore: periodgroupstore,
-        topicstore: topicstore,
-        exercisestore: exercisestore,
-        periodexercisestore: periodexercisestore
+    permchecker.hide();
+    devilry_authenticateduserinfo.UserInfo.load(function(user){
+        console.log(user.data);
+        is_superuser = user.data.is_nodeadmin || user.data.is_superadmin || user.data.is_subjectadmin;
+	if (!is_superuser) {
+	    permchecker.show();
+	}
+	else {
+	    // buttonbar.show()
+	    searchwidget.show();
+	    console.log("TODO: admin detected.");
+	}
     });
+    buttonbar = Ext.create('trix.AdminButtonBar', {});
+    // buttonbar = Ext.create('trix.DashboardButtonBar', {
+    //     node_modelname: 'trix.apps.trix.simplified.node.SimplifiedNode',
+    //     subject_modelname: 'trix.apps.trix.simplified.subject.SimplifiedSubject',
+    //     period_modelname: 'trix.apps.trix.simplified.period.SimplifiedPeriod',
+    //     periodgroup_modelname: 'trix.apps.trix.simplified.periodgroup.SimplifiedPeriodGroup',
+    //     topic_modelname:  'trix.apps.trix.simplified.topic.SimplifiedTopic',
+    //     exercise_modelname:  'trix.apps.trix.simplified.exercise.SimplifiedExercise',
+    //     periodexercise_modelname:  'trix.apps.trix.simplified.periodexercise.SimplifiedPeriodExercise',
+    //     is_superuser: is_superuser,
+    //     nodestore: nodestore,
+    //     subjectstore: subjectstore,
+    //     periodstore: periodstore,
+    //     periodgroupstore: periodgroupstore,
+    //     topicstore: topicstore,
+    //     exercisestore: exercisestore,
+    //     periodexercisestore: periodexercisestore
+    // });
 
     Ext.create('Ext.container.Viewport', {
         layout: 'border',
@@ -513,19 +530,7 @@
     exercisestore.load();
     periodexercisestore.load();
 
- if (!is_superuser) {
-     buttonbar.hide();
-     permchecker.show();
-} else {
-    permchecker.hide();
-    searchwidget.show();
-}
 Ext.getBody().unmask();
-
-// QnD hack to get rid of the button bar mask. I have
-// no clue why it's broken, but unmasking it too early
-// seems to have no effect.
-setInterval(function(){buttonbar.unmask()},3000);
 
 {% endblock %}
 
