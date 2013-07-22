@@ -7,6 +7,9 @@
 {% endblock %}
 
 {% block appjs %}
+
+{% include "trix/restful.js" %}
+
 {{ block.super }}
     Ext.require('devilry.extjshelpers.formfields.ForeignKeySelector');
     Ext.require('devilry.extjshelpers.RestfulSimplifiedEditWindowBase');
@@ -65,10 +68,10 @@ Ext.define('trix.apps.trix.simplified.topic.SimplifiedTopic', {
             remoteFilter: true,
             remoteSort: true,
             autoSync: true
-        });
+});
+exercisestore.load();
 
 {% endblock %}
-
 {% block onready %}
 {{ block.super }}
 

@@ -457,7 +457,8 @@ Ext.syncRequire('devilry_authenticateduserinfo.UserInfo');
     permchecker.hide();
     devilry_authenticateduserinfo.UserInfo.load(function(user){
         console.log(user.data);
-        is_superuser = user.data.is_nodeadmin || user.data.is_superadmin || user.data.is_subjectadmin;
+        is_superuser = user.data.is_nodeadmin || user.data.is_superadmin // do "superadmin"s even exist?
+	    || user.data.is_subjectadmin || user.data.is_superuser;
 	if (!is_superuser) {
 	    permchecker.show();
 	}
