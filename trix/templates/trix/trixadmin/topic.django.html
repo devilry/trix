@@ -9,6 +9,7 @@
 {% block appjs %}
 
 {% include "trix/restful-models.js" %}
+{% include "trix/restful-stores.js" %}
 
 {{ block.super }}
 Ext.require('devilry.extjshelpers.formfields.ForeignKeySelector');
@@ -21,14 +22,7 @@ Ext.require('trix.ModelView');
 Ext.require('trix.TopicView');
 
 
-var exercisestore = Ext.create('Ext.data.Store', {
-    model: 'trix.apps.trix.simplified.exercise.SimplifiedExercise',
-    id: 'trix.apps.trix.simplified.exercise.SimplifiedExerciseStore',
-    remoteFilter: true,
-    remoteSort: true,
-    autoSync: true
-});
-//exercisestore.load();
+var exercisestore = findStore("trix.apps.trix.simplified.exercise.SimplifiedExerciseStore");
 
 {% endblock %}
 {% block onready %}

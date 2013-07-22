@@ -86,13 +86,6 @@ Ext.create('Ext.container.Viewport', {
     }]
 });
 
-nodestore.load();
-subjectstore.load();
-periodstore.load();
-topicstore.load();
-exercisestore.load();
-periodexercisestore.load();
-
 Ext.getBody().unmask();
 
 {% endblock %}
