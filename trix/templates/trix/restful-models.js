@@ -1,4 +1,5 @@
-// restful.js: models and stores needed for various rest-tasks
+// restful-models.js: models needed for various rest-tasks
+var require
 Ext.define('trix.apps.trix.simplified.periodexercise.SimplifiedPeriodExerciseSearch', {
     extend: 'Ext.data.Model',
     requires: ['devilry.extjshelpers.RestProxy'],
@@ -61,9 +62,9 @@ Ext.define('trix.apps.trix.simplified.subject.SimplifiedSubjectSearch', {
             root: 'items',
             totalProperty: 'total'
         },
-                writer: {
-                    type: 'json'
-                }
+        writer: {
+            type: 'json'
+        }
     })
 });
 
@@ -308,4 +309,3 @@ Ext.define('trix.apps.trix.simplified.periodgroup.SimplifiedPeriodGroup', {
         }
     })
 });
-
