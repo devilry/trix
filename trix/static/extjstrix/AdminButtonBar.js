@@ -1,6 +1,19 @@
 Ext.define('trix.AdminButtonBar', {
     extend: 'Ext.Panel',
     cls: 'adminbuttonbar',
+    requires: [ // Note: copy-pasted from old ButtonBarButton, with functionality stripped. Enable as needed when adding new things.
+        // 'trix.forms.Node',
+        // 'trix.forms.Subject',
+        // 'trix.forms.Period',
+        // 'trix.forms.PeriodGroup',
+        'trix.forms.Topic',
+        // 'trix.forms.Exercise',
+        // 'trix.forms.PeriodExercise',
+        'devilry.administrator.DefaultCreateWindow',
+        'devilry.extjshelpers.RestfulSimplifiedEditPanel',
+        // 'devilry.extjshelpers.ButtonBarButton'
+    ],
+    
     border: 0,
     height: 40,
     layout: {
@@ -11,6 +24,10 @@ Ext.define('trix.AdminButtonBar', {
     },
     config: {
 	topic_modelname: undefined,
+    },
+    constructor: function(config){
+	this.initConfig(config);
+	this.callParent([config]);
     },
     initComponent: function() {
         var me = this;
@@ -28,7 +45,7 @@ Ext.define('trix.AdminButtonBar', {
 			    xtype: 'button',
 			    text: "New Topic",
 			    handler: function() {
-				console.log("new topic!");
+				console.log("new topic! " + me.topic_modelname);
 				Ext.create('trix.DefaultEditWindow', {
 				    title: 'Create new topic',
 				    editpanel: Ext.ComponentManager.create({

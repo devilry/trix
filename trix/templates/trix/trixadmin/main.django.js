@@ -467,7 +467,9 @@ Ext.syncRequire('devilry_authenticateduserinfo.UserInfo');
 	    console.log("TODO: admin detected.");
 	}
     });
-    buttonbar = Ext.create('trix.AdminButtonBar', {});
+buttonbar = Ext.create('trix.AdminButtonBar', {
+    topic_modelname: 'trix.apps.trix.simplified.topic.SimplifiedTopic'
+});
     // buttonbar = Ext.create('trix.DashboardButtonBar', {
     //     node_modelname: 'trix.apps.trix.simplified.node.SimplifiedNode',
     //     subject_modelname: 'trix.apps.trix.simplified.subject.SimplifiedSubject',
