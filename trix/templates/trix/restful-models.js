@@ -309,3 +309,25 @@ Ext.define('trix.apps.trix.simplified.periodgroup.SimplifiedPeriodGroup', {
         }
     })
 });
+
+Ext.define('trix.apps.trix.simplified.student.SimplifiedStudent', {
+    extend: 'Ext.data.Model',
+    requires: ['devilry.extjshelpers.RestProxy'],
+    fields: [{"type": "int", "name": "id"}, {"type": "auto", "name": "username"}, {"type": "auto", "name": "followedgroups__id"}, {"type": "auto", "name": "fake_followedgroups"}],
+    idProperty: 'id',
+    proxy: Ext.create('devilry.extjshelpers.RestProxy', {
+        url: '/trix/restfulsimplifiedstudent/',
+        extraParams: {
+            getdata_in_qrystring: true,
+            result_fieldgroups: '[]'
+        },
+        reader: {
+            type: 'json',
+            root: 'items',
+            totalProperty: 'total'
+        },
+        writer: {
+            type: 'json'
+        }
+    })
+});

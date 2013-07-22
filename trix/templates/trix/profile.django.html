@@ -9,31 +9,35 @@
 {% block headextra %}
 <link rel="stylesheet" href="{{DEVILRY_STATIC_URL }}/trix/print.css"
       type="text/css" media="print" charset="utf-8"/>
-  <script src="{{DEVILRY_STATIC_URL}}/extjstrix/statisticsmodels.js"></script>
-  <script src="{{DEVILRY_STATIC_URL}}/extjstrix/Barchart.js"></script>
-  <script src="{{DEVILRY_STATIC_URL}}/extjstrix/Periodgrid.js"></script>
-  <script src="{{DEVILRY_STATIC_URL}}/extjstrix/Topicgrid.js"></script>
-  <script src="{{DEVILRY_STATIC_URL}}/extjstrix/StatisticsTable.js"></script>
-  <script src="{{DEVILRY_STATIC_URL}}/extjstrix/StatisticsPanel.js"></script>
+<script src="{{DEVILRY_STATIC_URL}}/extjstrix/statisticsmodels.js"></script>
+<script src="{{DEVILRY_STATIC_URL}}/extjstrix/Barchart.js"></script>
+<script src="{{DEVILRY_STATIC_URL}}/extjstrix/Periodgrid.js"></script>
+<script src="{{DEVILRY_STATIC_URL}}/extjstrix/Topicgrid.js"></script>
+<script src="{{DEVILRY_STATIC_URL}}/extjstrix/StatisticsTable.js"></script>
+<script src="{{DEVILRY_STATIC_URL}}/extjstrix/StatisticsPanel.js"></script>
 {% endblock %}
 {% block onready %}
-    Ext.getBody().unmask();
+Ext.getBody().unmask();
 
-    Ext.create('Ext.container.Viewport', {
-        layout: 'border',
-        style: 'background-color: transparent',
-        items: [{
+Ext.create('Ext.container.Viewport', {
+    layout: 'border',
+    style: 'background-color: transparent',
+    items: [
+	{
             region: 'north',
             xtype: 'trixheader',
             navclass: 'examiner'
-        }, {
-            region: 'south',
-            xtype: 'trixfooter'
-        }, {
+	},
+	{
+	    region: 'south',
+	    xtype: 'trixfooter'
+        },
+	{
             region: 'center',
-            xtype: 'trixstats',
-        }]
-    });
+	    xtype: 'trixstats',
+        }
+    ]
+});
 {% endblock %}
 {% block bodyContent %}
 {% endblock %}
