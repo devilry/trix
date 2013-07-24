@@ -78,6 +78,90 @@ def get_points(user):
         points_total += int(stats.exercise.points * stats.status.percentage)
     return points_total
 
+def main(request, period_id=-1, topic_id=-1, exercise_id=-1):
+    """
+    Main page showing current exercises.
+    """
+
+    all_exercises = None
+    
+    if period_id != -1:
+        all_exercises = PeriodExercise.objects.filter(period__id=period_id)
+
+    elif topic_id != -1:
+        all_exercises = PeriodExercise.objects.filter(exercise__topics=topic_id)
+
+    elif exercise_id != -1:
+        all_exercises = PeriodExercise.objects.filter(id=exercise_id)
+
+    else:
+        all_exercises = PeriodExercise.objects.filter(period__start_time__lte
+                                                      =datetime.now(),
+                                                      period__end_time__gte
+                                                      =datetime.now())
+
+    exercises = {}
+    topics = {}
+    prerequisites = {}
+    topicstats = {}
+    followedperiods = []
+    followedgroups = []
+    if request.user.is_authenticated():
+        followedgroups = request.user.followedgroups.values_list('id', flat=True)
+    if not followedgroups:
+        followedgroups = PeriodGroup.objects.values_list('id', flat=True)
+
+    # This should be switched out with javascript logic that looks up exercises
+    for exercise in all_exercises:
+        e = {'id': exercise.id,
+             'number': exercise.number,
+             'title': exercise.exercise.long_name,
+             'text': exercise.exercise.text,
+             'status': -1,
+             'status_name': '',
+             'points': exercise.points,
+             'starred': exercise.starred,
+             'topics': exercise.exercise.topics.all(),
+             'prerequisites': exercise.exercise.prerequisites.all()
+             }
+
+        for topic in e['topics']:
+            if not topicstats.has_key(topic.id):
+                topicstats.setdefault(topic.id, get_topic_points(topic, request.user))
+        for topic in e['prerequisites']:
+            if not topicstats.has_key(topic.id):
+                topicstats.setdefault(topic.id, get_topic_points(topic, request.user))        
+
+        ps = exercise.exercise.prerequisites.exclude(id__in=prerequisites.keys)
+        for p in ps:
+            prerequisites.setdefault(p.id, p)
+        
+        if request.user.is_authenticated():
+            try:
+                stats = exercise.student_results.get(student=request.user)
+                e.update({'status': stats.status.id, 'status_name': stats.status.name})
+            except ExerciseStatus.DoesNotExist:
+                pass
+
+        exercises.setdefault(exercise.period, {}).update([[exercise.number, e]])
+        if (exercise.period not in followedperiods and period_id != -1
+            or exercise_id != -1 or exercise.period.group_id in followedgroups):
+            followedperiods.append(exercise.period)
+
+    statuses = []
+    if request.user.is_authenticated():
+        statuses = Status.objects.filter(active=True)
+
+    return render(request,'trix/main.django.html',
+                  {'exercises': exercises,
+                   'statuses': statuses,
+                   'topicstats': topicstats,
+                   'followedperiods': followedperiods,
+                   'level': get_level(get_points(request.user)),
+                   'restfulapi': dump_all_into_dict(restful)})
+
+#                  {'exercises': Period.objects.all().exercises.all()})
+
 def get_portrait(level):
     """
     Gets the avatar portrait URL for a given level.
@@ -90,46 +174,46 @@ def get_portrait(level):
     
     return ''.join([portrait_class, (str(level)), '.', image_type])
 
-# @login_required
-# def profile(request):
-#     """
-#     Profile page showing user stats.
-#     """
-#     level = get_level(get_points(request.user))
-#     return render(request, 'trix/profile.django.html',
-#                   {'level': level,
-#                    'portrait': get_portrait(level['level'])})
-# @login_required
-# def administrator(request):
-#     """
-#     Administrator page showing the administrator interface
-#     """
-#     return render(request, 'trix/trixadmin/main.django.js',
-#                   {'restfulapi': dump_all_into_dict(restful),
-#                    'page_title':'admin'})
+@login_required
+def profile(request):
+    """
+    Profile page showing user stats.
+    """
+    level = get_level(get_points(request.user))
+    return render(request, 'trix/profile.django.html',
+                  {'level': level,
+                   'portrait': get_portrait(level['level'])})
+@login_required
+def administrator(request):
+    """
+    Administrator page showing the administrator interface
+    """
+    return render(request, 'trix/trixadmin/main.django.js',
+                  {'restfulapi': dump_all_into_dict(restful),
+                   'page_title':'admin'})
 
-# @login_required
-# def periodadmin(request, period_id=-1):
-#     """
-#     Administrator interface for periods,
-#     allowing an admin to change a period's exercises.
-#     """
-#     return render(request, 'trix/trixadmin/period.django.html',
-#                   {'objectid': period_id,
-#                    'restfulapi': dump_all_into_dict(restful)
-#                    })
+@login_required
+def periodadmin(request, period_id=-1):
+    """
+    Administrator interface for periods,
+    allowing an admin to change a period's exercises.
+    """
+    return render(request, 'trix/trixadmin/period.django.html',
+                  {'objectid': period_id,
+                   'restfulapi': dump_all_into_dict(restful)
+                   })
 
 
-# @login_required
-# def periodgroupadmin(request, periodgroup_id=-1):
-#     """
-#     Administrator interface for period groups,
-#     allowing an admin to add periods.
-#     """
-#     return render(request, 'trix/trixadmin/periodgroup.django.html',
-#                   {'objectid': periodgroup_id,
-#                    'restfulapi': dump_all_into_dict(restful)
-#                    })
+@login_required
+def periodgroupadmin(request, periodgroup_id=-1):
+    """
+    Administrator interface for period groups,
+    allowing an admin to add periods.
+    """
+    return render(request, 'trix/trixadmin/periodgroup.django.html',
+                  {'objectid': periodgroup_id,
+                   'restfulapi': dump_all_into_dict(restful)
+                   })
 
 
 @login_required
