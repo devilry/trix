@@ -142,3 +142,5 @@ def get_topic_points(topic, user):
     for stat in stats:
         points += int(stat.exercise.points * stat.status.percentage)
     return points
+
+
