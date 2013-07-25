@@ -35,8 +35,8 @@ periodstore.pageSize = 1;
 var dashboard_periodmodel = Ext.ModelManager.getModel('trix.apps.trix.simplified.period.SimplifiedPeriod');
 
 permchecker = Ext.create('Ext.Component', {
-    html: '<div class="section info-small extravisible-small"><h1>{{ DEVILRY_ADMINISTRATOR_NO_PERMISSION_MSG.title }}</h1>' +
-        '<p>{{ DEVILRY_ADMINISTRATOR_NO_PERMISSION_MSG.body }}</p></div>',
+    html: '<div class="section info-small extravisible-small"><h1>{{ You are not an administrator }}</h1>' +
+        '<p> You are not registered as an administrator on any Node, Subject/Course, Period/Semester or Assignment in Devilry. If this is wrong, please contact the system administrator. </p></div>',
 });
 permchecker.hide();
 devilry_authenticateduserinfo.UserInfo.load(function(user){
