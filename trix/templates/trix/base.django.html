@@ -4,7 +4,7 @@
 <html lang="{{ LANGUAGE_CODE }}">
     <head>
       <title>
-            {% block title %}{{ page_title|default:"Trix" }}{% endblock %}
+            {% block title %}{{ page_title|default:"Trix" }} {% static "extjs4/" %} {% endblock %}
         </title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" >
 
@@ -15,24 +15,20 @@
         {% endif %}
 
         <!-- ** ExtJS ** -->
-        <link rel="stylesheet" type="text/css" media="screen"
-                {# href="{{ DEVILRY_EXTJS_URL }}/resources/css/ext-all.css" /> #}
-                href="{{ DEVILRY_EXTJS_URL }}/resources/css/ext-all-gray.css" />
+        <link rel="stylesheet" type="text/css" media="screen" href="{% static "extjs4/resources/css/ext-all-gray.css" %}" />
 
         <script type="text/javascript" src="{% url django.views.i18n.javascript_catalog %}"></script>
 	{% if EXTJS4_DEBUG %}
-        <script type="text/javascript" src='{% static "extjs4/ext-all.js" %}'></script>
+        <script type="text/javascript" src='{% static "extjs4/ext-all-debug.js" %}'></script>
 	{% else %}
-	<!-- TODO: this needs to be fixed -- for some reason, ext-all.js gives errors,
-	     but ext-all-debug.js does not. -->
-	<script type="text/javascript" src='{% static "extjs4/ext-all-debug.js" %}'></script>
+	<script type="text/javascript" src='{% static "extjs4/ext-all.js" %}'></script>
 	{% endif %}
 
         <script type="text/javascript" src="{{ DEVILRY_STATIC_URL }}/extjshelpers/formatoverrides.js"></script>
 	<script type="text/javascript" src="{{ DEVILRY_STATIC_URL }}/devilry_extjsextras/form/DateTimeField.js"></script>
         <script type="text/javascript">
             // Path to the blank image should point to a valid location on your server
-            Ext.BLANK_IMAGE_URL = '{{ DEVILRY_EXTJS_URL }}/resources/themes/images/default/tree/s.gif';
+            Ext.BLANK_IMAGE_URL = '{% static "extjs4/resources/themes/images/default/tree/s.gif" %}';
             Ext.Loader.setConfig({
                 enabled: true,
                 paths: {
