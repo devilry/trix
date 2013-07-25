@@ -11,7 +11,13 @@ def administrator(request):
     """
     return render(request, 'trix/trixadmin/main.django.js',
                   {'restfulapi': dump_all_into_dict(trix.restful),
-                   'page_title':'admin'})
+                   'page_title':'admin',
+                   'TRIX_ADMINISTRATOR_NO_PERMISSION': {
+                       # TODO: this should probably be localizable
+                       'head': "You are not an administrator",
+                       'body': "You are not registered as an administrator on any Node, Subject/Course, Period/Semester or Assignment in Devilry. If this is wrong, please contact the system administrator."
+                   }
+               })
 
 @login_required
 def periodadmin(request, period_id=-1):
