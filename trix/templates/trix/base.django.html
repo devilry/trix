@@ -1,5 +1,6 @@
 {# <!DOCTYPE HTML> #}
 {% load i18n %}
+{% load static %}
 <html lang="{{ LANGUAGE_CODE }}">
     <head>
       <title>
@@ -19,7 +20,13 @@
                 href="{{ DEVILRY_EXTJS_URL }}/resources/css/ext-all-gray.css" />
 
         <script type="text/javascript" src="{% url django.views.i18n.javascript_catalog %}"></script>
-        <script type="text/javascript" src="{{ DEVILRY_EXTJS_URL }}/ext-all-debug.js"></script>
+	{% if EXTJS4_DEBUG %}
+        <script type="text/javascript" src='{% static "extjs4/ext-all.js" %}'></script>
+	{% else %}
+	<!-- TODO: this needs to be fixed -- for some reason, ext-all.js gives errors,
+	     but ext-all-debug.js does not. -->
+	<script type="text/javascript" src='{% static "extjs4/ext-all-debug.js" %}'></script>
+	{% endif %}
 
         <script type="text/javascript" src="{{ DEVILRY_STATIC_URL }}/extjshelpers/formatoverrides.js"></script>
 	<script type="text/javascript" src="{{ DEVILRY_STATIC_URL }}/devilry_extjsextras/form/DateTimeField.js"></script>
