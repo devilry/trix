@@ -21,7 +21,8 @@ def periodadmin(request, period_id=-1):
     """
     return render(request, 'trix/trixadmin/period.django.html',
                   {'objectid': period_id,
-                   'restfulapi': dump_all_into_dict(restful)
+                   'restfulapi': dump_all_into_dict(trix.restful),
+                   'page_title':'exercise admin'
                })
 
 @login_required
@@ -32,7 +33,7 @@ def periodgroupadmin(request, periodgroup_id=-1):
     """
     return render(request, 'trix/trixadmin/periodgroup.django.html',
                   {'objectid': periodgroup_id,
-                   'restfulapi': dump_all_into_dict(restful)
+                   'restfulapi': dump_all_into_dict(trix.restful)
                })
 
 
@@ -45,7 +46,8 @@ def exerciseadmin(request, exercise_id=-1):
     """
     return render(request, 'trix/trixadmin/exercise.django.html',
                   {'objectid': exercise_id,
-                   'restfulapi': dump_all_into_dict(restful)
+                   'restfulapi': dump_all_into_dict(trix.restful),
+                   'page_title': 'exercise admin'
                    })
 @login_required
 def topicadmin(request, topic_id=-1):
@@ -55,6 +57,6 @@ def topicadmin(request, topic_id=-1):
     """
     return render(request, 'trix/trixadmin/topic.django.html',
                   {'objectid': topic_id,
-                   'restfulapi': dump_all_into_dict(restful),
-                   'page_title':'admin'
+                   'restfulapi': dump_all_into_dict(trix.restful),
+                   'page_title':'topic admin'
                    })
