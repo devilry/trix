@@ -1,0 +1,12 @@
+Thu Jul 25 19:10:35 CEST 2013:
+	Ported trix to devilry 1.2. An incomplete list of the changes made:
+	- Removed outdated extjshelpers code
+	- restructured models and stores
+	- fixed a large variety of bugs
+	- cleaned up repository (removed unused binary blobs and fixtures etc)
+	- restructured admin interface. Lots of functionality was broken and/or superfluous
+	- switched to devilrys up-to-date ExtJS version
+	- removed various dependencies on internal or deprecated devilry functionality
+	- ...
+	- autodb
+	- more documentation
