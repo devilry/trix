@@ -1,5 +1,5 @@
 from trix.models import ExerciseStatus
-from devilry.simplified import FieldSpec, simplified_modelapi, SimplifiedModelApi
+from trix_simplified import FieldSpec, simplified_modelapi, SimplifiedModelApi
 from authorization import AuthorizationMixin
 
 @simplified_modelapi

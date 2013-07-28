@@ -1,5 +1,5 @@
 from trix.models import Exercise, Topic
-from devilry.simplified import (FieldSpec, simplified_modelapi, SimplifiedModelApi, FilterSpec, FilterSpecs)
+from trix_simplified import (FieldSpec, simplified_modelapi, SimplifiedModelApi, FilterSpec, FilterSpecs)
 from authorization import AuthorizationMixin
 from fakefieldcleaner import fakefieldcleaner
 

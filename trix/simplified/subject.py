@@ -1,5 +1,5 @@
 from devilry.coreutils.simplified.metabases import SimplifiedSubjectMetaMixin
-from devilry.simplified import FieldSpec, simplified_modelapi, SimplifiedModelApi
+from trix_simplified import FieldSpec, simplified_modelapi, SimplifiedModelApi
 from devilry.apps.core.models import Subject
 from authorization import AuthorizationMixin
 

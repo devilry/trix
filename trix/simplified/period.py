@@ -1,5 +1,5 @@
 from devilry.coreutils.simplified.metabases import SimplifiedPeriodMetaMixin
-from devilry.simplified import (FieldSpec, FilterSpec, FilterSpecs, intOrNoneConverter,
+from trix_simplified import (FieldSpec, FilterSpec, FilterSpecs, intOrNoneConverter,
                                 simplified_modelapi, SimplifiedModelApi)
 from trix.models import Period
 from authorization import AuthorizationMixin

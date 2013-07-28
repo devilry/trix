@@ -1,6 +1,6 @@
 from django.contrib.auth.models import User
 from trix.models import PeriodGroup
-from devilry.simplified import FieldSpec, simplified_modelapi, SimplifiedModelApi
+from trix_simplified import FieldSpec, simplified_modelapi, SimplifiedModelApi
 from authorization import AuthorizationMixin
 from fakefieldcleaner import fakefieldcleaner
 

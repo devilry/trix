@@ -1,5 +1,5 @@
 from ..models import Topic
-from devilry.simplified import FieldSpec, simplified_modelapi
+from trix_simplified import FieldSpec, simplified_modelapi
 from authorization import AuthorizationMixin
 
 @simplified_modelapi

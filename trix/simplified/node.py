@@ -1,4 +1,4 @@
-from devilry.simplified import (FieldSpec, FilterSpecs, simplified_modelapi,
+from trix_simplified import (FieldSpec, FilterSpecs, simplified_modelapi,
                                 FilterSpec, PatternFilterSpec,
                                 SimplifiedModelApi)
 from authorization import AuthorizationMixin

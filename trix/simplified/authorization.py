@@ -1,4 +1,4 @@
-from devilry.simplified import SimplifiedModelApi, PermissionDenied
+from trix_simplified import SimplifiedModelApi, PermissionDenied
 
 class AuthorizationMixin(SimplifiedModelApi):
 

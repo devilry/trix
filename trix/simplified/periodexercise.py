@@ -1,5 +1,5 @@
 from trix.models import PeriodExercise
-from devilry.simplified import FieldSpec, FilterSpec, FilterSpecs, simplified_modelapi, SimplifiedModelApi
+from trix_simplified import FieldSpec, FilterSpec, FilterSpecs, simplified_modelapi, SimplifiedModelApi
 from authorization import AuthorizationMixin
 
 @simplified_modelapi
