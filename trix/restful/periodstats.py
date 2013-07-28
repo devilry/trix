@@ -1,6 +1,6 @@
-from devilry.restful import restful_api, RestfulView, RestfulManager
-from devilry.restful.restview import extjswrap
-from devilry.restful.serializers import SerializableResult, ErrorMsgSerializableResult
+from trix_restful import restful_api, RestfulView, RestfulManager
+from trix_restful.restview import extjswrap
+from trix_restful.serializers import SerializableResult, ErrorMsgSerializableResult
 
 from django.db.models import Count, Sum
 from django.http import HttpResponseBadRequest

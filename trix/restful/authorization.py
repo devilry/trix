@@ -1,4 +1,4 @@
-from devilry.restful import ModelRestfulView
+from trix_restful import ModelRestfulView
 from django.conf.urls.defaults import url
 
 class AuthorizationMixin(ModelRestfulView):

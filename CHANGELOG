@@ -7,6 +7,7 @@ Thu Jul 25 19:10:35 CEST 2013:
 	- restructured admin interface. Lots of functionality was broken and/or superfluous
 	- switched to devilrys up-to-date ExtJS version
 	- removed various dependencies on internal or deprecated devilry functionality
+	- moved some deprecated devilry APIs into trix and switched to using those instead
 	- ...
 	- autodb
 	- more documentation
