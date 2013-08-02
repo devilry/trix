@@ -8,19 +8,19 @@
 
 {% block appjs %}
 {{ block.super }}
-    Ext.require('devilry.extjshelpers.RestfulSimplifiedEditWindowBase');
-    Ext.require('devilry.extjshelpers.RestfulSimplifiedEditPanel');
-    Ext.require('devilry.extjshelpers.ButtonBarButton');
-    Ext.require('devilry.extjshelpers.ButtonBar');
+    Ext.require('trix_extjshelpers.RestfulSimplifiedEditWindowBase');
+    Ext.require('trix_extjshelpers.RestfulSimplifiedEditPanel');
+    Ext.require('trix_extjshelpers.ButtonBarButton');
+    Ext.require('trix_extjshelpers.ButtonBar');
     Ext.require('trix.forms.PeriodExercise');
     Ext.require('trix.PeriodView');
  
     Ext.define('trix.apps.trix.simplified.period.SimplifiedPeriod', {
             extend: 'Ext.data.Model',
-            requires: ['devilry.extjshelpers.RestProxy'],
+            requires: ['trix_extjshelpers.RestProxy'],
             fields: [{"type": "int", "name": "id"}, {"type": "auto", "name": "parentnode"}, {"type": "auto", "name": "short_name"}, {"type": "auto", "name": "long_name"}, {"type": "date", "name": "start_time", "dateFormat": "Y-m-dTH:i:s"}, {"type": "date", "name": "end_time", "dateFormat": "Y-m-dTH:i:s"}, {"type": "auto", "name": "group"}, {"type": "auto", "name": "period_ptr"}, {"type": "auto", "name": "parentnode__short_name"}, {"type": "auto", "name": "parentnode__long_name"}],
             idProperty: 'period_ptr',
-            proxy: Ext.create('devilry.extjshelpers.RestProxy', {
+            proxy: Ext.create('trix_extjshelpers.RestProxy', {
                 url: '/trix/restfulsimplifiedperiod/',
                 extraParams: {
                     getdata_in_qrystring: true,
@@ -38,10 +38,10 @@
         }),
   Ext.define('trix.apps.trix.simplified.topic.SimplifiedTopic', {
             extend: 'Ext.data.Model',
-            requires: ['devilry.extjshelpers.RestProxy'],
+            requires: ['trix_extjshelpers.RestProxy'],
             fields: [{"type": "int", "name": "id"}, {"type": "auto", "name": "name"}],
             idProperty: 'id',
-            proxy: Ext.create('devilry.extjshelpers.RestProxy', {
+            proxy: Ext.create('trix_extjshelpers.RestProxy', {
                 url: '/trix/restfulsimplifiedtopic/',
                 extraParams: {
                     getdata_in_qrystring: true,
@@ -59,10 +59,10 @@
         }),
   Ext.define('trix.apps.trix.simplified.subject.SimplifiedSubject', {
             extend: 'Ext.data.Model',
-            requires: ['devilry.extjshelpers.RestProxy'],
+            requires: ['trix_extjshelpers.RestProxy'],
             fields: [{"type": "int", "name": "id"}, {"type": "auto", "name": "parentnode"}, {"type": "auto", "name": "short_name"}, {"type": "auto", "name": "long_name"}],
             idProperty: 'id',
-            proxy: Ext.create('devilry.extjshelpers.RestProxy', {
+            proxy: Ext.create('trix_extjshelpers.RestProxy', {
                 url: '/trix/restfulsimplifiedsubject/',
                 extraParams: {
                     getdata_in_qrystring: true,
@@ -80,10 +80,10 @@
         }),
   Ext.define('trix.apps.trix.simplified.periodexercise.SimplifiedPeriodExercise', {
             extend: 'Ext.data.Model',
-            requires: ['devilry.extjshelpers.RestProxy'],
+            requires: ['trix_extjshelpers.RestProxy'],
             fields: [{"type": "int", "name": "id"}, {"type": "auto", "name": "period"}, {"type": "auto", "name": "exercise"}, {"type": "int", "name": "points"}, {"type": "bool", "name": "starred"}, {"type": "int", "name": "number"}, {"type": "auto", "name": "exercise__short_name"}, {"type": "auto", "name": "exercise__long_name"}, {"type": "auto", "name": "exercise__topics__name"}],
             idProperty: 'id',
-            proxy: Ext.create('devilry.extjshelpers.RestProxy', {
+            proxy: Ext.create('trix_extjshelpers.RestProxy', {
                 url: '/trix/restfulsimplifiedperiodexercise/',
                 extraParams: {
                     getdata_in_qrystring: true,
@@ -101,10 +101,10 @@
         }),
   Ext.define('trix.apps.trix.simplified.exercise.SimplifiedExercise', {
             extend: 'Ext.data.Model',
-            requires: ['devilry.extjshelpers.RestProxy'],
+            requires: ['trix_extjshelpers.RestProxy'],
             fields: [{"type": "int", "name": "id"}, {"type": "auto", "name": "short_name"}, {"type": "auto", "name": "long_name"}, {"type": "auto", "name": "text"}, {"type": "int", "name": "points"}, {"type": "int", "name": "topics__id"}, {"type": "int", "name": "prerequisites__id"}, {"type": "auto", "name": "fake_topics"}, {"type": "auto", "name": "fake_prerequisites"}],
             idProperty: 'id',
-            proxy: Ext.create('devilry.extjshelpers.RestProxy', {
+            proxy: Ext.create('trix_extjshelpers.RestProxy', {
                 url: '/trix/restfulsimplifiedexercise/',
                 extraParams: {
                     getdata_in_qrystring: true,

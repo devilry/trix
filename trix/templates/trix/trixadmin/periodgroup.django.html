@@ -8,18 +8,18 @@
 
 {% block appjs %}
 {{ block.super }}
-    Ext.require('devilry.extjshelpers.RestfulSimplifiedEditWindowBase');
-    Ext.require('devilry.extjshelpers.RestfulSimplifiedEditPanel');
-    Ext.require('devilry.extjshelpers.ButtonBarButton');
-    Ext.require('devilry.extjshelpers.ButtonBar');
+    Ext.require('trix_extjshelpers.RestfulSimplifiedEditWindowBase');
+    Ext.require('trix_extjshelpers.RestfulSimplifiedEditPanel');
+    Ext.require('trix_extjshelpers.ButtonBarButton');
+    Ext.require('trix_extjshelpers.ButtonBar');
     Ext.require('trix.forms.PeriodGroup');
     Ext.require('trix.PeriodGroupView');
   Ext.define('trix.apps.trix.simplified.period.SimplifiedPeriod', {
             extend: 'Ext.data.Model',
-            requires: ['devilry.extjshelpers.RestProxy'],
+            requires: ['trix_extjshelpers.RestProxy'],
             fields: [{"type": "int", "name": "id"}, {"type": "auto", "name": "parentnode"}, {"type": "auto", "name": "short_name"}, {"type": "auto", "name": "long_name"}, {"type": "date", "name": "start_time", "dateFormat": "Y-m-dTH:i:s"}, {"type": "date", "name": "end_time", "dateFormat": "Y-m-dTH:i:s"}, {"type": "auto", "name": "group"}, {"type": "auto", "name": "period_ptr"}],
             idProperty: 'period_ptr',
-            proxy: Ext.create('devilry.extjshelpers.RestProxy', {
+            proxy: Ext.create('trix_extjshelpers.RestProxy', {
                 url: '/trix/restfulsimplifiedperiod/',
                 extraParams: {
                     getdata_in_qrystring: true,
@@ -37,10 +37,10 @@
         }),
   Ext.define('trix.apps.trix.simplified.subject.SimplifiedSubject', {
             extend: 'Ext.data.Model',
-            requires: ['devilry.extjshelpers.RestProxy'],
+            requires: ['trix_extjshelpers.RestProxy'],
             fields: [{"type": "int", "name": "id"}, {"type": "auto", "name": "parentnode"}, {"type": "auto", "name": "short_name"}, {"type": "auto", "name": "long_name"}],
             idProperty: 'id',
-            proxy: Ext.create('devilry.extjshelpers.RestProxy', {
+            proxy: Ext.create('trix_extjshelpers.RestProxy', {
                 url: '/trix/restfulsimplifiedsubject/',
                 extraParams: {
                     getdata_in_qrystring: true,
@@ -58,10 +58,10 @@
         }),
   Ext.define('trix.apps.trix.simplified.periodgroup.SimplifiedPeriodGroup', {
             extend: 'Ext.data.Model',
-            requires: ['devilry.extjshelpers.RestProxy'],
+            requires: ['trix_extjshelpers.RestProxy'],
             fields: [{"type": "int", "name": "id"}, {"type": "auto", "name": "long_name"}, {"type": "auto", "name": "subject"}, {"type": "auto", "name": "subject__long_name"}, {"type": "auto", "name": "periods__id"}, {"type": "auto", "name": "periods__short_name"}, {"type": "auto", "name": "periods__long_name"}, {"type": "auto", "name": "fake_periods"}, {"type": "auto", "name": "fake_followers"}, {"type": "auto", "name": "fake_students"}],
             idProperty: 'id',
-            proxy: Ext.create('devilry.extjshelpers.RestProxy', {
+            proxy: Ext.create('trix_extjshelpers.RestProxy', {
                 url: '/trix/restfulsimplifiedperiodgroup/',
                 extraParams: {
                     getdata_in_qrystring: true,

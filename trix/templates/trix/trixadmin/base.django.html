@@ -9,10 +9,10 @@ Ext.SSL_SECURE_URL = 'javascript:""';
 
 Ext.define('trix.apps.trix.simplified.topic.SimplifiedTopicSearch', {
     extend: 'Ext.data.Model',
-    requires: ['devilry.extjshelpers.RestProxy'],
+    requires: ['trix_extjshelpers.RestProxy'],
     fields: [{"type": "int", "name": "id"}, {"type": "auto", "name": "name"}],
     idProperty: 'id',
-    proxy: Ext.create('devilry.extjshelpers.RestProxy', {
+    proxy: Ext.create('trix_extjshelpers.RestProxy', {
         url: '/trix/restfulsimplifiedtopic/',
         extraParams: {
             getdata_in_qrystring: true,
