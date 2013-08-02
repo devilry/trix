@@ -31,7 +31,7 @@ setup(
         'Development Status :: 3 - Alpha',
         'Environment :: Web Environment',
         'Framework :: Django',
-        'Indended Audience :: End Users/Desktop',
+        'Intended Audience :: End Users/Desktop',
         'License :: OSI Approved',
         'Operating System :: OS Independent',
         'Programming Language :: Python'
