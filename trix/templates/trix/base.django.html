@@ -24,7 +24,7 @@
 	<script type="text/javascript" src='{% static "extjs4/ext-all.js" %}'></script>
 	{% endif %}
 
-        <script type="text/javascript" src="{{ DEVILRY_STATIC_URL }}/extjshelpers/formatoverrides.js"></script>
+        <script type="text/javascript" src="{{ DEVILRY_STATIC_URL }}/trix_extjshelpers/formatoverrides.js"></script>
 	<script type="text/javascript" src="{{ DEVILRY_STATIC_URL }}/devilry_extjsextras/form/DateTimeField.js"></script>
         <script type="text/javascript">
             // Path to the blank image should point to a valid location on your server
@@ -32,6 +32,7 @@
             Ext.Loader.setConfig({
                 enabled: true,
                 paths: {
+	            'trix_extjshelpers': '{{ DEVILRY_STATIC_URL }}/extjshelpers_classes/extjshelpers',
                     'devilry': '{{ DEVILRY_STATIC_URL }}/extjs_classes',
                     'Ext': '{{ DEVILRY_STATIC_URL }}/extjsux',
                     'trix': '{{ DEVILRY_STATIC_URL }}/extjstrix',
