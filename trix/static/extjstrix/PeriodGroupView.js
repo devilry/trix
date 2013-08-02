@@ -7,7 +7,7 @@ Ext.define('trix.PeriodGroupView', {
         'trix.forms.PeriodGroup',
         'trix.forms.AddPeriod',
         'devilry.administrator.DefaultCreateWindow',
-        'devilry.extjshelpers.RestfulSimplifiedEditPanel',
+        'trix_extjshelpers.RestfulSimplifiedEditPanel',
     ],
 
     config: {

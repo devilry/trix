@@ -1,6 +1,6 @@
 Ext.define('trix.Exercise', {
     extend: 'Ext.data.Model',
-    requires: ['devilry.extjshelpers.RestProxy'],
+    requires: ['trix_extjshelpers.RestProxy'],
     fields: [
         {"type": "int", "name": "id"},
         {"type": "auto", "name": "short_name"},
@@ -14,7 +14,7 @@ Ext.define('trix.Exercise', {
         {"type": "auto", "name": "fake_topics"},
         {"type": "auto", "name": "fake_prerequisites"}],
     idProperty: 'id',
-    proxy: Ext.create('devilry.extjshelpers.RestProxy', {
+    proxy: Ext.create('trix_extjshelpers.RestProxy', {
         url: '/trix/restfulsimplifiedexercise/',
         extraParams: {
             getdata_in_qrystring: true,

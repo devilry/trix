@@ -2,7 +2,7 @@ Ext.define('trix.forms.AddPrerequisite', {
     extend: 'Ext.form.Panel',
     alias: 'widget.administrator_addprerequisiteform',
     cls: 'widget-exerciseform',
-    requires: ['devilry.extjshelpers.formfields.ForeignKeySelector'],
+    requires: ['trix_extjshelpers.formfields.ForeignKeySelector'],
     
     suggested_windowsize: {
         width: 600,

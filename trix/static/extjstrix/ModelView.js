@@ -75,7 +75,6 @@ Ext.define('trix.ModelView', {
             });
         }
         this.callParent(arguments);
-
         var model = Ext.ModelManager.getModel(this.modelname);
         model.load(this.objectid, {
             scope: this,

@@ -3,10 +3,10 @@
 // Period statistics
 Ext.define('trix.apps.trix.restful.periodstats.RestfulPeriodStatistics', {
     extend: 'Ext.data.Model',
-    requires: ['devilry.extjshelpers.RestProxy'],
+    requires: ['trix_extjshelpers.RestProxy'],
     fields: [{"type": "int", "name": "id"}, {"type": "auto", "name": "short_name"}, {"type": "auto", "name": "long_name"}, {"type": "int", "name": "exercises"}, {"type": "int", "name": "exercises_done"}, {"type": "int", "name": "starred"}, {"type": "int", "name": "starred_done"}, {"type": "int", "name": "total_points"}, {"type": "int", "name": "points"}, {"type": "int", "name": "starred_percent"}, {"type": "int", "name": "points_percent"}, {"type": "int", "name": "done_percent"}],
     idProperty: 'id',
-    proxy: Ext.create('devilry.extjshelpers.RestProxy', {
+    proxy: Ext.create('trix_extjshelpers.RestProxy', {
         url: '/trix/restfulperiodstatistics/',
         extraParams: {
             getdata_in_qrystring: true,
@@ -23,10 +23,10 @@ Ext.define('trix.apps.trix.restful.periodstats.RestfulPeriodStatistics', {
 // Topic statistics
 Ext.define('trix.apps.trix.restful.topicstats.RestfulTopicStatistics', {
     extend: 'Ext.data.Model',
-    requires: ['devilry.extjshelpers.RestProxy'],
+    requires: ['trix_extjshelpers.RestProxy'],
     fields: [{"type": "int", "name": "id"}, {"type": "auto", "name": "name"}, {"type": "int", "name": "exercises"}, {"type": "i' nt", "name": "exercises_done"}, {"type": "int", "name": "starred"}, {"type": "int", "name": "starred_done"}, {"type": "int", "name": "total_points"}, {"type": "int", "name": "points"}, {"type": "int", "name": "starred_percent"}, {"type": "int", "name": "points_percent"}, {"type": "int", "name": "done_percent"}],
     idProperty: 'id',
-    proxy: Ext.create('devilry.extjshelpers.RestProxy', {
+    proxy: Ext.create('trix_extjshelpers.RestProxy', {
         url: '/trix/restfultopicstatistics/',
         extraParams: {
             getdata_in_qrystring: true,

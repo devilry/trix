@@ -3,7 +3,7 @@ Ext.define('trix.forms.Node', {
     alias: 'widget.administrator_nodeform',
     cls: 'widget-nodeform',
     requires: [
-        'devilry.extjshelpers.formfields.ForeignKeySelector'
+        'trix_extjshelpers.formfields.ForeignKeySelector'
     ],
 
     suggested_windowsize: {

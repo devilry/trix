@@ -1,7 +1,7 @@
 /** Default config for the Create New window, which is opened to create an item
  * in the admin interface. */
 Ext.define('trix.DefaultEditWindow', {
-    extend: 'devilry.extjshelpers.RestfulSimplifiedEditWindowBase',
+    extend: 'trix_extjshelpers.RestfulSimplifiedEditWindowBase',
 
     config: {
         /**

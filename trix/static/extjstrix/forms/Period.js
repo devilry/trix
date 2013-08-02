@@ -3,8 +3,8 @@ Ext.define('trix.forms.Period', {
     alias: 'widget.administrator_periodform',
     cls: 'widget-periodform',
     requires: [
-        'devilry.extjshelpers.formfields.ForeignKeySelector',
-        'devilry.extjshelpers.formfields.DateTimeField',
+        'trix_extjshelpers.formfields.ForeignKeySelector',
+        'trix_extjshelpers.formfields.DateTimeField',
 	'devilry_extjsextras.form.DateTimeField',
 	'devilry_extjsextras.DatetimeHelpers'
     ],

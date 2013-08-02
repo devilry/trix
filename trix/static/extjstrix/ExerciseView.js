@@ -9,8 +9,8 @@ Ext.define('trix.ExerciseView', {
         'trix.DefaultEditWindow',
         'trix.forms.PeriodExercise',
         'devilry.administrator.DefaultCreateWindow',
-        'devilry.extjshelpers.RestfulSimplifiedEditPanel',
-        'devilry.extjshelpers.formfields.ForeignKeySelector'
+        'trix_extjshelpers.RestfulSimplifiedEditPanel',
+        'trix_extjshelpers.formfields.ForeignKeySelector'
     ],
 
     autoScroll: true,

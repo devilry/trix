@@ -1,5 +1,5 @@
 Ext.define('trix.DashboardButtonBar', {
-    extend: 'devilry.extjshelpers.ButtonBar',
+    extend: 'trix_extjshelpers.ButtonBar',
     cls: 'dashboard-buttonbar',
 
     requires: [
@@ -11,8 +11,8 @@ Ext.define('trix.DashboardButtonBar', {
         'trix.forms.Exercise',
         'trix.forms.PeriodExercise',
         'devilry.administrator.DefaultCreateWindow',
-        'devilry.extjshelpers.RestfulSimplifiedEditPanel',
-        'devilry.extjshelpers.ButtonBarButton'
+        'trix_extjshelpers.RestfulSimplifiedEditPanel',
+        'trix_extjshelpers.ButtonBarButton'
     ],
 
     config: {

@@ -2,7 +2,7 @@ Ext.define('trix.forms.AddPeriod', {
     extend: 'Ext.form.Panel',
     alias: 'widget.administrator_addperiodform',
     cls: 'widget-periodgroupform',
-    requires: ['devilry.extjshelpers.formfields.ForeignKeySelector'],
+    requires: ['trix_extjshelpers.formfields.ForeignKeySelector'],
     
     suggested_windowsize: {
         width: 600,

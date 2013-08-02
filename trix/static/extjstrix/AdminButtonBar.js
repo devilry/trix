@@ -10,8 +10,8 @@ Ext.define('trix.AdminButtonBar', {
         'trix.forms.Exercise',
         // 'trix.forms.PeriodExercise',
         'devilry.administrator.DefaultCreateWindow',
-        'devilry.extjshelpers.RestfulSimplifiedEditPanel',
-        // 'devilry.extjshelpers.ButtonBarButton'
+        'trix_extjshelpers.RestfulSimplifiedEditPanel',
+        // 'trix_extjshelpers.ButtonBarButton'
     ],
     
     border: 0,

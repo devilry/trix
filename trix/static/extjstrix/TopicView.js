@@ -6,7 +6,7 @@ Ext.define('trix.TopicView', {
         'trix.forms.Topic',
         'trix.DefaultEditWindow',
         'devilry.administrator.DefaultCreateWindow',
-        'devilry.extjshelpers.RestfulSimplifiedEditPanel'
+        'trix_extjshelpers.RestfulSimplifiedEditPanel'
     ],
 
     config: {

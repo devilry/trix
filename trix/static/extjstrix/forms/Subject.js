@@ -3,7 +3,7 @@ Ext.define('trix.forms.Subject', {
     alias: 'widget.administrator_subjectform',
     cls: 'widget-periodform',
     requires: [
-        'devilry.extjshelpers.formfields.ForeignKeySelector'
+        'trix_extjshelpers.formfields.ForeignKeySelector'
     ],
 
     suggested_windowsize: {

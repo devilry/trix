@@ -4,9 +4,9 @@
  * Lets users search for topics, periods or exercises that have been given.
  */
 Ext.define('trix.TrixSearchWidget', {
-    extend: 'devilry.extjshelpers.searchwidget.SearchWidget',
+    extend: 'trix_extjshelpers.searchwidget.SearchWidget',
     requires: [
-        'devilry.extjshelpers.searchwidget.FilterConfigDefaults',
+        'trix_extjshelpers.searchwidget.FilterConfigDefaults',
     ],
 
     config: {

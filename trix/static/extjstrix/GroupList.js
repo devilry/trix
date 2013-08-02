@@ -8,8 +8,8 @@ Ext.define('trix.GroupList', {
         'trix.forms.AddGroup',
         'trix.DefaultEditWindow',
         'devilry.administrator.DefaultCreateWindow',
-        'devilry.extjshelpers.RestfulSimplifiedEditPanel',
-        'devilry.extjshelpers.formfields.ForeignKeySelector'
+        'trix_extjshelpers.RestfulSimplifiedEditPanel',
+        'trix_extjshelpers.formfields.ForeignKeySelector'
     ],
 
     config: {
