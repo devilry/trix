@@ -5,16 +5,16 @@ Ext.define('trix.forms.Exercise', {
     requires: ['trix_extjshelpers.formfields.ForeignKeySelector'],
 
     suggested_windowsize: {
-        width: 900,
-        height: 600
+        width: 1200,
+        height: 730
     },
 
     flex: 8,
 
-    layout: {
-        type: 'vbox',
-        align: 'stretch'
-    },
+    //layout: {
+        //type: 'vbox',
+        //align: 'stretch'
+    //},
 
     fieldDefaults: {
         labelAlign: 'top',
@@ -25,22 +25,18 @@ Ext.define('trix.forms.Exercise', {
     items: [{
         name: "long_name",
         fieldLabel: gettext("Long name"),
+        anchor: '100%',
         xtype: 'textfield',
         emptyText: gettext('Example: Hello World')
     }, {
-        xtype: 'container',
-        anchor: '100%',
-        layout: 'column',
-        items: [{
-            name: "short_name",
-            fieldLabel: gettext("Short name"),
-            xtype: 'textfield',
-            emptyText: gettext('Example: output1')
-        }, {
-            name: "points",
-            fieldLabel: gettext("Points"),
-            xtype: 'numberfield'
-        }]
+        name: "short_name",
+        fieldLabel: gettext("Short name"),
+        xtype: 'textfield',
+        emptyText: gettext('Example: output1')
+    }, {
+        name: "points",
+        fieldLabel: gettext("Points"),
+        xtype: 'numberfield'
     }, {
         xtype: 'container',
         anchor: '100%',
@@ -67,7 +63,7 @@ Ext.define('trix.forms.Exercise', {
         fieldLabel: gettext("Exercise text"),
         xtype: 'htmleditor',
         anchor: '100%',
-        flex: 1
+        height: 300
     }],
 
     help: [
