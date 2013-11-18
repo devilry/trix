@@ -32,24 +32,26 @@ periodstore.pageSize = 1;
 
 {% block onready %}
 {{ block.super }}
+
 var dashboard_periodmodel = Ext.ModelManager.getModel('trix.apps.trix.simplified.period.SimplifiedPeriod');
 
 permchecker = Ext.create('Ext.Component', {
     html: '<div class="section info-small extravisible-small">' +
-	'<h1>{{ TRIX_ADMINISTRATOR_NO_PERMISSION.head }}</h1>' +
+    '<h1>{{ TRIX_ADMINISTRATOR_NO_PERMISSION.head }}</h1>' +
         '<p> {{ TRIX_ADMINISTRATOR_NO_PERMISSION.body }} </p></div>',
 });
 permchecker.hide();
+
 devilry_authenticateduserinfo.UserInfo.load(function(user){
     //console.log(user.data);
     is_superuser = user.data.is_nodeadmin || user.data.is_superadmin // do "superadmin"s even exist?
-	|| user.data.is_subjectadmin || user.data.is_superuser;
+    || user.data.is_subjectadmin || user.data.is_superuser;
     if (!is_superuser) {
-	permchecker.show();
+        permchecker.show();
     }
     else {
-	searchwidget.show();
-	console.log("TODO: admin detected.");
+        searchwidget.show();
+        console.log("TODO: admin detected.");
     }
 });
 buttonbar = Ext.create('trix.AdminButtonBar', {
@@ -76,17 +78,24 @@ Ext.create('Ext.container.Viewport', {
             align: 'stretch'
         },
         items: [
-	    searchwidget,
-	    {
-		xtype:'box',
-		height: 20
-	    },
-	    permchecker,
-	    buttonbar
-	]
+        {% if user.is_superuser %}
+            searchwidget,
+            {
+                xtype:'box',
+                height: 20
+            },
+            permchecker,
+            buttonbar
+        {% else %}
+            {
+                xtype: 'box',
+                padding: '20px',
+                html: '{% trans "You do not have admin rights for Trix." %}'
+            }
+        {% endif %}
+        ]
     }]
 });
 
 Ext.getBody().unmask();
-
 {% endblock %}
