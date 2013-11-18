@@ -58,6 +58,7 @@
                 is_authenticated: {{ user.is_authenticated|yesno:"true,false" }},
                 username: '{{ user.username }}'
             });
+            Ext.syncRequire('devilry.extjshelpers.RestProxy');
 
             Ext.onReady(function() {
                 Ext.QuickTips.init();
