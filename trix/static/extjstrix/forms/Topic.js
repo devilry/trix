@@ -4,8 +4,8 @@ Ext.define('trix.forms.Topic', {
     cls: 'widget-topicform',
 
     suggested_windowsize: {
-        width: 400,
-        height: 200
+        width: 600,
+        height: 250
     },
 
     flex: 8,
