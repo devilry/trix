@@ -18,14 +18,15 @@
         <link rel="stylesheet" type="text/css" media="screen" href="{% static "extjs4/resources/css/ext-all-gray.css" %}" />
 
         <script type="text/javascript" src="{% url django.views.i18n.javascript_catalog %}"></script>
-	{% if EXTJS4_DEBUG %}
-        <script type="text/javascript" src='{% static "extjs4/ext-all-debug.js" %}'></script>
-	{% else %}
-	<script type="text/javascript" src='{% static "extjs4/ext-all.js" %}'></script>
-	{% endif %}
+        {% if EXTJS4_DEBUG %}
+            <script type="text/javascript" src='{% static "extjs4/ext-all-debug.js" %}'></script>
+        {% else %}
+            <script type="text/javascript" src='{% static "extjs4/ext-all.js" %}'></script>
+        {% endif %}
 
+        <script type="text/javascript" src="{% static "trix/consolefallback.js" %}"></script>
         <script type="text/javascript" src="{{ DEVILRY_STATIC_URL }}/trix_extjshelpers/formatoverrides.js"></script>
-	<script type="text/javascript" src="{{ DEVILRY_STATIC_URL }}/devilry_extjsextras/form/DateTimeField.js"></script>
+        <script type="text/javascript" src="{{ DEVILRY_STATIC_URL }}/devilry_extjsextras/form/DateTimeField.js"></script>
         <script type="text/javascript">
             // Path to the blank image should point to a valid location on your server
             Ext.BLANK_IMAGE_URL = '{% static "extjs4/resources/themes/images/default/tree/s.gif" %}';
