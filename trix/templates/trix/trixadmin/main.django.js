@@ -70,7 +70,7 @@ Ext.create('Ext.container.Viewport', {
         region: 'center',
         xtype: 'container',
         border: false,
-        padding: {left: 20, right: 20},
+        padding: '0 20px 0 20px',
         layout: {
             type: 'vbox',
             align: 'stretch'
