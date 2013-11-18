@@ -15,13 +15,13 @@ Ext.define('trix.AdminButtonBar', {
     ],
     
     border: 0,
-    height: 40,
-    layout: {
-	type: 'vbox',
-	align: 'stretch',
-	pack: 'center',
-	padding: '40 40 40 40'
-    },
+    //height: 40,
+    //layout: {
+        //type: 'vbox',
+        //align: 'stretch',
+        //pack: 'center',
+        //padding: '40 40 40 40'
+    //},
     config: {
 	topic_modelname: undefined,
 	exercise_modelname: undefined,
@@ -44,6 +44,7 @@ Ext.define('trix.AdminButtonBar', {
 		    items: [
 			{
 			    xtype: 'button',
+                scale: 'large',
 			    text: "New Topic",
 			    handler: function() {
 				console.log("new topic! " + me.topic_modelname);
@@ -59,6 +60,7 @@ Ext.define('trix.AdminButtonBar', {
 			},
 			{
 			    xtype: 'button',
+                scale: 'large',
 			    text: "New Exercise",
 			    handler: function() {
 				Ext.create('trix.DefaultEditWindow', {
@@ -73,11 +75,17 @@ Ext.define('trix.AdminButtonBar', {
 			}
 		    ]
 		},
-		{ 'html': "<strong>Note: </strong> If you wish to create Nodes, Periods, Subjects et cetera, you will have to do so"
-		  + " through <!--<a href=\"/\">-->devilrys admin interface.<!--</a>-->",
-		  // TODO: put in URL here to devilry admin interface. Needs to be passed in through constructor, probably
-		}
-	    ]
+		{
+            xtype: 'box',
+            style: 'text-align: center;',
+            margin: '10px 0 0 0',
+
+            // TODO: put in URL here to devilry admin interface. Needs to be passed in through constructor, probably
+            'html': [
+                "<strong>Note: </strong> If you wish to create Nodes, Periods, Subjects et cetera, you will have to do so",
+                " through <!--<a href=\"/\">-->devilrys admin interface.<!--</a>-->"
+            ].join('')
+		}]
 	});
 	this.callParent(arguments);
     }
