@@ -17,7 +17,8 @@
         <!-- ** ExtJS ** -->
         <link rel="stylesheet" type="text/css" media="screen" href="{% static "extjs4/resources/css/ext-all-gray.css" %}" />
 
-        <script type="text/javascript" src="{% url django.views.i18n.javascript_catalog %}"></script>
+        <script type="text/javascript" src="{% url trix_i18n %}"></script>
+
         {% if EXTJS4_DEBUG %}
             <script type="text/javascript" src='{% static "extjs4/ext-all-debug.js" %}'></script>
         {% else %}
