@@ -5,8 +5,8 @@ Ext.define('trix.forms.Exercise', {
     requires: ['trix_extjshelpers.formfields.ForeignKeySelector'],
 
     suggested_windowsize: {
-        width: 600,
-        height: 500
+        width: 900,
+        height: 600
     },
 
     flex: 8,
