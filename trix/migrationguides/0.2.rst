@@ -1,0 +1,16 @@
+================================
+Migrate to Trix 0.2 (2013-11-19)
+================================
+
+This release includes fixes to make it work after two years of not tracking the
+Devilry repo.
+
+
+Database changes
+################
+The Devilry database does not have a lot of changes. The only thing you need to
+do is to add the ``languagecode`` field to the ``core_devilryuserprofile``. For
+Postgres, it looks like this::
+
+    ALTER TABLE mytrixdb ADD COLUMN languagecode character varying(100);
+
