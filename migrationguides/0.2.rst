@@ -12,5 +12,5 @@ The Devilry database does not have a lot of changes. The only thing you need to
 do is to add the ``languagecode`` field to the ``core_devilryuserprofile``. For
 Postgres, it looks like this::
 
-    ALTER TABLE mytrixdb ADD COLUMN languagecode character varying(100);
+    ALTER TABLE core_devilryuserprofile ADD COLUMN languagecode character varying(100);
 
