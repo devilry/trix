@@ -13,4 +13,5 @@ do is to add the ``languagecode`` field to the ``core_devilryuserprofile``. For
 Postgres, it looks like this::
 
     ALTER TABLE core_devilryuserprofile ADD COLUMN languagecode character varying(100);
+    ALTER TABLE core_assignment ADD COLUMN "deadline_handling" integer CHECK ("deadline_handling" >= 0) NOT NULL;
 
