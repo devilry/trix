@@ -1,15 +1,6 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 
-@login_required
-def profile(request):
-    """
-    Profile page showing user stats.
-    """
-    level = get_level(get_points(request.user))
-    return render(request, 'trix/profile.django.html',
-                  {'level': level,
-                   'portrait': get_portrait(level['level'])})
 
 def get_portrait(level):
     """
@@ -20,8 +11,18 @@ def get_portrait(level):
     image_type = 'png'
     if level > 10:
         return ''.join([portrait_class, '10', '.', image_type])
-    
+
     return ''.join([portrait_class, (str(level)), '.', image_type])
+
+@login_required
+def profile(request):
+    """
+    Profile page showing user stats.
+    """
+    level = get_level(get_points(request.user))
+    return render(request, 'trix/profile.django.html',
+                  {'level': level,
+                   'portrait': get_portrait(level['level'])})
 
 
 def get_level(points=0):
@@ -78,15 +79,3 @@ def get_points(user):
     for stats in user.exercise_results.all():
         points_total += int(stats.exercise.points * stats.status.percentage)
     return points_total
-
-def get_portrait(level):
-    """
-    Gets the avatar portrait URL for a given level.
-    """
-    #user should be able to choose the portrait type at some point. Currently only ifitar is available
-    portrait_class = 'ifitar'
-    image_type = 'png'
-    if level > 10:
-        return ''.join([portrait_class, '10', '.', image_type])
-    
-    return ''.join([portrait_class, (str(level)), '.', image_type])

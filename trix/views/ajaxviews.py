@@ -1,6 +1,11 @@
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render, get_object_or_404
-from trix.models import Status, Exercise, Topic, ExerciseStatus, PeriodExercise, PeriodGroup
+from django.shortcuts import get_object_or_404
+from django.http import Http404
+from django.http import HttpResponse
+
+from trix.models import Status, ExerciseStatus, PeriodExercise
+from .profileviews import get_level
+from .profileviews import get_points
 
 @login_required
 def exercisestatus(request, exercise=-1):
@@ -9,7 +14,7 @@ def exercisestatus(request, exercise=-1):
     This is made for AJAX
     """
     exc = get_object_or_404(PeriodExercise, pk=exercise)
-    
+
     status = None
     if request.POST['status'] != "-1":
         status = get_object_or_404(Status, pk=request.POST['status'])
